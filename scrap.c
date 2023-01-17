@@ -307,7 +307,7 @@ static void s_hashmap_resize(struct hashmap *hashmap, struct hashmap_area *area,
 	hashmap->buckets = buckets;
 	hashmap->n_buckets = next_buckets;
 
-	__atomic_clear(&(hashmap->resizing), __ATOMIC_SEQ_CST);
+	__atomic_clear(&(hashmap->resizing), __ATOMIC_RELEASE);
 	pthread_mutex_lock(&(hashmap->ensured_mutex));
 	pthread_cond_broadcast(&(hashmap->ensured_cond));
 	pthread_mutex_unlock(&(hashmap->ensured_mutex));
