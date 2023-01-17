@@ -16,7 +16,7 @@
 	OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-static void s_hashmap_resize(struct hashmap *hashmap, struct hashmap_area *area, bool is_main_thread /* test_and_set(&(hashmap->resizing), acq) == false */ {
+static void s_hashmap_resize(struct hashmap *hashmap, struct hashmap_area *area, bool is_main_thread /* test_and_set(&(hashmap->resizing), acq) == false */) {
 	/*
 		this relies on the fact that the buckets' hashes (mod hashmap->n_buckets) are
 		already sequential from a particular index onwards. all of the buckets' hashes
